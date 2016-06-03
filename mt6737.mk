@@ -59,6 +59,7 @@ PRODUCT_COPY_FILES += \
 # Motorola Camera permissions
 PRODUCT_COPY_FILES += \
     $(VENDOR_PATH)/configs/com.motorola.camera.xml:system/etc/permissions/com.motorola.camera.xml \
+    $(VENDOR_PATH)/configs/com.motorola.cameraone.xml:system/etc/permissions/com.motorola.cameraone.xml \
     $(VENDOR_PATH)/configs/com.motorola.motosignature.xml:system/etc/permissions/com.motorola.motosignature.xml
 
 # Media
