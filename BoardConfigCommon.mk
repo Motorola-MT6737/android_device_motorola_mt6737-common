@@ -17,6 +17,10 @@
 # inherit from the proprietary version
 -include vendor/motorola/mt6737-common/BoardConfigVendor.mk
 
+VENDOR_PATH := device/motorola/mt6737-common
+
+TARGET_SPECIFIC_HEADER_PATH := $(VENDOR_PATH)/include
+
 # Platform
 TARGET_BOARD_PLATFORM := mt6737m
 TARGET_NO_BOOTLOADER := true
@@ -89,7 +93,7 @@ BOARD_USES_MTK_AUDIO := true
 
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS := device/motorola/mt6737-common/cmhw
+BOARD_HARDWARE_CLASS := $(VENDOR_PATH)/cmhw
 
 # Fix video autoscaling on old OMX decoders
 TARGET_OMX_LEGACY_RESCALING := true
@@ -101,7 +105,7 @@ BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 BOARD_RIL_CLASS := ../../../device/motorola/mt6737-common/ril/
 
 # GPS
-BOARD_GPS_LIBRARIES :=true
+BOARD_GPS_LIBRARIES := true
 BOARD_CONNECTIVITY_MODULE := MT6625
 BOARD_MEDIATEK_USES_GPS := true
 
@@ -132,12 +136,12 @@ EXTENDED_FONT_FOOTPRINT := true
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_BLUETOOTH_BDROID_HCILP_INCLUDED := 0
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/motorola/mt6737-common/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(VENDOR_PATH)/bluetooth
 
 TARGET_LDPRELOAD += mtk_symbols.so
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/motorola/mt6737-common/rootdir/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/recovery.fstab
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # TWRP stuff
@@ -156,14 +160,15 @@ TW_HAS_DOWNLOAD_MODE := true
 TW_EXCLUDE_SUPERSU := true
 TW_USE_TOOLBOX := true
 
-TARGET_SYSTEM_PROP := device/motorola/mt6737-common/system.prop
-TARGET_SPECIFIC_HEADER_PATH := device/motorola/mt6737-common/include
+# Properties
+TARGET_SYSTEM_PROP := $(VENDOR_PATH)/system.prop
+
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote32
 
 # Sepolicy
 BOARD_SEPOLICY_DIRS := \
-       device/motorola/mt6737-common/sepolicy
+       $(VENDOR_PATH)/sepolicy
 
 # Seccomp filter
-BOARD_SECCOMP_POLICY += device/motorola/mt6737-common/seccomp
+BOARD_SECCOMP_POLICY += $(VENDOR_PATH)/seccomp
