@@ -41,13 +41,6 @@
 
     <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveBatteryLed">true</bool>
-
-    <!-- Does the notification LED support multiple colors? Used to decide if the user can change the colors -->
-    <!-- <bool name="config_multiColorNotificationLed">false</bool> -->
-
-    <!-- Does the battery LED support multiple colors?
-         Used to decide if the user can change the colors -->
-    <!-- <bool name="config_multiColorBatteryLed">false</bool>     -->
     
     <!-- Default color for notification LED is green. -->
     <color name="config_defaultNotificationColor">#ff0000ff</color>
@@ -147,6 +140,7 @@
 	<item>8000</item>
 	<item>10000</item>
     </integer-array>
+	
     <!-- Array of output values for LCD backlight corresponding to the LUX values
          in the config_autoBrightnessLevels array.  This array should have size one greater
          than the size of the config_autoBrightnessLevels array.
@@ -225,22 +219,6 @@
          config to 7. -->
     <integer name="config_deviceHardwareWakeKeys">79</integer>
 
-    
-    <!-- Performance profiles -->
-	<!--
-    <string name="config_perf_profile_prop">sys.perf.profile</string>
-    <string name="config_perf_profile_default_entry">1</string> -->
-
-    
-    <!-- Show battery fully charged notification -->
-    <!-- <bool name="config_showBatteryFullyChargedNotification">true</bool> -->
- 
-    <!-- Doze mode -->
-    <!--<string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string> -->
-    <!--<integer name="config_screenBrightnessDoze">5</integer> -->
-    <!--<bool name="config_dozeAfterScreenOff">true</bool> -->
-    <!--<bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool> -->
-
     <!-- Control whether Night display is available. This should only be enabled on devices
          with HWC 2.0 or higher. -->
     <bool name="config_nightDisplayAvailable">true</bool>
@@ -273,5 +251,4 @@
     <!-- If supported, are dreams enabled? (by default) -->
     <bool name="config_dreamsEnabledByDefault">false</bool>
 
-    
 </resources>
