@@ -70,11 +70,8 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # RAMDISK
 PRODUCT_COPY_FILES += \
-    $(VENDOR_PATH)/rootdir/init.project.rc:root/init.project.rc \
-    $(VENDOR_PATH)/rootdir/init.modem.rc:root/init.modem.rc \
     $(VENDOR_PATH)/rootdir/ueventd.mt6735.rc:root/ueventd.mt6735.rc \
     $(VENDOR_PATH)/rootdir/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
-    $(VENDOR_PATH)/rootdir/init.mt6735.rc:root/init.mt6735.rc \
     $(VENDOR_PATH)/rootdir/fstab.mt6735:root/fstab.mt6735 \
     $(VENDOR_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
     $(VENDOR_PATH)/rootdir/init.rc:root/init.rc \
