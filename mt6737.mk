@@ -16,11 +16,9 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-LOCAL_PATH := device/motorola/mt6737-common
+VENDOR_PATH := device/motorola/mt6737-common
 
-$(call inherit-product, vendor/motorola/mt6737-common/mt6737-common-vendor.mk)
-
-DEVICE_PACKAGE_OVERLAYS += device/motorola/mt6737-common/overlay
+DEVICE_PACKAGE_OVERLAYS += $(VENDOR_PATCH)/overlay
 
 # Dalvik/HWUI
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
@@ -72,18 +70,18 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # RAMDISK
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/init.project.rc:root/init.project.rc \
-    $(LOCAL_PATH)/rootdir/init.modem.rc:root/init.modem.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.mt6735.rc:root/ueventd.mt6735.rc \
-    $(LOCAL_PATH)/rootdir/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
-    $(LOCAL_PATH)/rootdir/init.mt6735.rc:root/init.mt6735.rc \
-    $(LOCAL_PATH)/rootdir/fstab.mt6735:root/fstab.mt6735 \
-    $(LOCAL_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
-    $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
-    $(LOCAL_PATH)/rootdir/sbin/busybox:root/sbin/busybox \
-    $(LOCAL_PATH)/rootdir/init.microtrust.rc:root/init.microtrust.rc \
-    $(LOCAL_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc \
-    $(LOCAL_PATH)/rootdir/init.mt6735.power.rc:root/init.mt6735.power.rc
+    $(VENDOR_PATH)/rootdir/init.project.rc:root/init.project.rc \
+    $(VENDOR_PATH)/rootdir/init.modem.rc:root/init.modem.rc \
+    $(VENDOR_PATH)/rootdir/ueventd.mt6735.rc:root/ueventd.mt6735.rc \
+    $(VENDOR_PATH)/rootdir/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
+    $(VENDOR_PATH)/rootdir/init.mt6735.rc:root/init.mt6735.rc \
+    $(VENDOR_PATH)/rootdir/fstab.mt6735:root/fstab.mt6735 \
+    $(VENDOR_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
+    $(VENDOR_PATH)/rootdir/init.rc:root/init.rc \
+    $(VENDOR_PATH)/rootdir/sbin/busybox:root/sbin/busybox \
+    $(VENDOR_PATH)/rootdir/init.microtrust.rc:root/init.microtrust.rc \
+    $(VENDOR_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc \
+    $(VENDOR_PATH)/rootdir/init.mt6735.power.rc:root/init.mt6735.power.rc
 
 # Audio
 PRODUCT_PACKAGES += \

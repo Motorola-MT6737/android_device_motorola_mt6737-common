@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# inherit from the proprietary version
--include vendor/motorola/mt6737-common/BoardConfigVendor.mk
-
 VENDOR_PATH := device/motorola/mt6737-common
 
 TARGET_SPECIFIC_HEADER_PATH := $(VENDOR_PATH)/include
@@ -68,7 +65,6 @@ BOARD_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 BOARD_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 
 # Graphics
-BOARD_EGL_CFG := /vendor/motorola/mt6737-common/vendor/lib/egl/egl.cfg
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 USE_OPENGL_RENDERER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
