@@ -130,16 +130,22 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.mt6737m
 
+# Extras
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.mount.fs=EXT4 \
-    ro.adb.secure=0 \
-    ro.secure=0 \
     ro.allow.mock.location=0 \
-    ro.debuggable=1 \
     persist.service.acm.enable=0 \
     ro.config.low_ram=false \
     persist.service.adb.enable=1 \
     persist.sys.usb.config=mtp
+    
+# Adb
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.secure=0 \
+    ro.allow.mock.location=1 \
+    ro.debuggable=1 \
+    ro.adb.secure=0 \
+    ro.oem_unlock_supported=1
 
 # IO Scheduler
 PRODUCT_PROPERTY_OVERRIDES += \
