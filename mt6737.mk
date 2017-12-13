@@ -124,10 +124,12 @@ PRODUCT_PACKAGES += \
 # mtk symbols
 PRODUCT_PACKAGES += \
     mtk_symbols
-
-# Power
+    
+# Only build audio HAL on non-E4 devices
+ifeq ($(filter woods,$(TARGET_DEVICE)),)
 PRODUCT_PACKAGES += \
     power.mt6737m
+endif
 
 # Extras
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
