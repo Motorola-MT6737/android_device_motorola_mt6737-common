@@ -124,7 +124,7 @@ PRODUCT_PACKAGES += \
     mtk_symbols
 
 # Only build audio HAL on non-E4 devices
-ifeq ($(filter woods,$(TARGET_DEVICE)),)
+ifeq ($(filter woods nicklaus,$(TARGET_DEVICE)),)
 PRODUCT_PACKAGES += \
     power.mt6737m
 endif
