@@ -105,7 +105,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger \
     libnl_2 \
-    libion
+    libion \
+    fingerprintd
 
 # Charger Mode
 PRODUCT_PACKAGES += \
