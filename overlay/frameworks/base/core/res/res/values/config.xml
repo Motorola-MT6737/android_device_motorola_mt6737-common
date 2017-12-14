@@ -44,15 +44,6 @@
     
     <!-- Default color for notification LED is green. -->
     <color name="config_defaultNotificationColor">#ff0000ff</color>
-
-    <!-- Default value for led color when battery is low on charge -->
-    <integer name="config_notificationsBatteryLowARGB">0xffff0000</integer>
-
-    <!-- Default value for led color when battery is medium charged -->
-    <integer name="config_notificationsBatteryMediumARGB">0xffff0000</integer>
-
-    <!-- Default value for led color when battery is fully charged -->
-    <integer name="config_notificationsBatteryFullARGB">0xff0000ff</integer>
     
     <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
     <bool name="config_cellBroadcastAppLinks">true</bool>
@@ -135,49 +126,46 @@
     <bool name="config_automatic_brightness_available">true</bool>
 
     <integer-array name="config_autoBrightnessLevels">
-        <item>16</item>
-	<item>32</item>
-	<item>50</item>
-	<item>100</item>
-	<item>140</item>
-	<item>180</item>
-	<item>240</item>
-	<item>300</item>
-	<item>600</item>
-	<item>1000</item>
-	<item>2000</item>
-	<item>3000</item>
-	<item>4000</item>
-	<item>8000</item>
-	<item>10000</item>
+        <item>10</item>
+        <item>200</item>
+        <item>320</item>
+        <item>450</item>
+        <item>580</item>
+        <item>700</item>
+        <item>850</item>
+        <item>950</item>
+        <item>1500</item>
+        <item>3000</item>
+        <item>5000</item>
+        <item>7000</item>
+        <item>9000</item>
+        <item>11000</item>
+        <item>13000</item>
+        <item>15000</item>
+        <item>17000</item>
     </integer-array>
-	
-    <!-- Array of output values for LCD backlight corresponding to the LUX values
-         in the config_autoBrightnessLevels array.  This array should have size one greater
-         than the size of the config_autoBrightnessLevels array.
-         The brightness values must be between 0 and 255 and be non-decreasing.
-         This must be overridden in platform specific overlays -->
+
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>30</item>
-	<item>40</item>
-	<item>50</item>
-	<item>60</item>
-	<item>70</item>
-	<item>80</item>
-	<item>102</item>
-	<item>102</item>
-	<item>102</item>
-	<item>102</item>
-	<item>102</item>
-	<item>180</item>
-	<item>200</item>
-	<item>210</item>
-	<item>230</item>
-	<item>255</item>
+        <item>1</item>
+        <item>12</item>
+        <item>91</item>
+        <item>103</item>
+        <item>107</item>
+        <item>113</item>
+        <item>120</item>
+        <item>129</item>
+        <item>134</item>
+        <item>152</item>
+        <item>224</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
     </integer-array>
-    
-    <integer name="config_buttonBrightnessSettingDefault">0</integer>  
-    
+        
     <!-- Flag indicating if the user is notified when the mobile network access is restricted -->
     <bool name="config_user_notification_of_restrictied_mobile_access">false</bool>
 
