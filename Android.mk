@@ -15,6 +15,6 @@
 #
 
 LOCAL_PATH := $(call my-dir)
-ifneq ($(filter woods namath nicklaus,$(TARGET_DEVICE)),)
+ifneq ($(filter woods nicklaus,$(TARGET_DEVICE)),)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 endif

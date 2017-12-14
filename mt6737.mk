@@ -124,12 +124,9 @@ PRODUCT_PACKAGES += \
 # mtk symbols
 PRODUCT_PACKAGES += \
     mtk_symbols
-    
-# Only build audio HAL on non-E4 devices
-ifeq ($(filter woods nicklaus,$(TARGET_DEVICE)),)
+
 PRODUCT_PACKAGES += \
     power.mt6737m
-endif
 
 # Extras
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -139,7 +136,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.config.low_ram=false \
     persist.service.adb.enable=1 \
     persist.sys.usb.config=mtp
-    
+
 # Adb
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \
