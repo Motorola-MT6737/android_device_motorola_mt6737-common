@@ -77,7 +77,9 @@ PRODUCT_COPY_FILES += \
     $(VENDOR_PATH)/rootdir/init.rc:root/init.rc \
     $(VENDOR_PATH)/rootdir/sbin/busybox:root/sbin/busybox \
     $(VENDOR_PATH)/rootdir/init.microtrust.rc:root/init.microtrust.rc \
-    $(VENDOR_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc
+    $(VENDOR_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc \
+    $(VENDOR_PATH)/rootdir/init.mt6735.rc:root/init.mt6735.rc \
+    $(VENDOR_PATH)/rootdir/init.mt6735.power.rc:root/init.mt6735.power.rc
 
 # Audio
 PRODUCT_PACKAGES += \
