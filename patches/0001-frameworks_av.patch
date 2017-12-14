@@ -1,3 +1,41 @@
+From 0d97caa23872d7a38f25caae4af3cc74422bd07b Mon Sep 17 00:00:00 2001
+From: darklord4822 <darklord4722@gmail.com>
+Date: Sat, 7 Oct 2017 11:52:52 +0000
+Subject: [PATCH] changes for MTK
+
+Change-Id: Iea6589dd273c21c96948776317be5609ec312265
+---
+ include/media/AudioSystem.h                        |   8 +
+ include/media/IAudioFlinger.h                      |   8 +
+ include/media/IAudioPolicyService.h                |   2 +
+ include/media/IOMX.h                               |   7 +
+ include/media/stagefright/CameraSource.h           |   4 +
+ media/libmedia/AudioSystem.cpp                     | 108 +++++++
+ media/libmedia/IAudioFlinger.cpp                   | 213 +++++++++++++
+ media/libmedia/IAudioPolicyService.cpp             |  30 +-
+ media/libstagefright/ACodec.cpp                    |  39 +++
+ media/libstagefright/Android.mk                    |   6 +
+ media/libstagefright/CameraSource.cpp              |  27 ++
+ media/libstagefright/colorconversion/Android.mk    |   2 +
+ media/libstagefright/omx/OMX.cpp                   |  18 ++
+ .../omx/SoftVideoDecoderOMXComponent.cpp           |  13 +
+ services/audioflinger/AudioFlinger.cpp             | 170 ++++++++++
+ services/audioflinger/AudioFlinger.h               |  11 +-
+ services/audioflinger/Threads.cpp                  |   2 +
+ services/audiopolicy/Android.mk                    |  27 ++
+ services/audiopolicy/AudioPolicyInterface.h        |   4 +
+ .../common/managerdefinitions/Android.mk           |   9 +
+ .../engine/interface/AudioPolicyManagerObserver.h  |   3 +
+ services/audiopolicy/enginedefault/Android.mk      |   9 +
+ services/audiopolicy/enginedefault/src/Engine.cpp  |   9 +
+ .../managerdefault/AudioPolicyManager.cpp          | 343 +++++++++++++++++++++
+ .../managerdefault/AudioPolicyManager.h            |  22 ++
+ .../audiopolicy/service/AudioPolicyClientImpl.cpp  |   9 +
+ .../service/AudioPolicyInterfaceImpl.cpp           |  14 +
+ .../audiopolicy/service/AudioPolicyService.cpp     |  49 ++-
+ services/audiopolicy/service/AudioPolicyService.h  |  14 +
+ 29 files changed, 1177 insertions(+), 3 deletions(-)
+
 diff --git a/include/media/AudioSystem.h b/include/media/AudioSystem.h
 index 268791e..86c64c1 100644
 --- a/include/media/AudioSystem.h
@@ -1733,3 +1771,7 @@ index fec95cc..c66377f 100644
 +    struct audio_policy_mtk *mpAudioPolicy;
      AudioPolicyInterface *mAudioPolicyManager;
      AudioPolicyClient *mAudioPolicyClient;
+ 
+-- 
+1.9.1
+
