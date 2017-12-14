@@ -72,6 +72,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_COPY_FILES += \
     $(VENDOR_PATH)/rootdir/ueventd.mt6735.rc:root/ueventd.mt6735.rc \
     $(VENDOR_PATH)/rootdir/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
+    $(VENDOR_PATH)/rootdir/fstab.mt6735:root/fstab.mt6735 \
     $(VENDOR_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
     $(VENDOR_PATH)/rootdir/init.rc:root/init.rc \
     $(VENDOR_PATH)/rootdir/sbin/busybox:root/sbin/busybox \
@@ -122,7 +123,7 @@ PRODUCT_PACKAGES += \
 # mtk symbols
 PRODUCT_PACKAGES += \
     mtk_symbols
-
+    
 # Only build audio HAL on non-E4 devices
 ifeq ($(filter woods nicklaus,$(TARGET_DEVICE)),)
 PRODUCT_PACKAGES += \
@@ -137,7 +138,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.config.low_ram=false \
     persist.service.adb.enable=1 \
     persist.sys.usb.config=mtp
-
+    
 # Adb
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \
