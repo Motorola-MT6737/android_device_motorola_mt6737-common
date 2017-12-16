@@ -4,14 +4,8 @@
 
 ro.hardware=mt6735
 ro.board.platform=mt6737m
-service.adb.root=1
-persist.sys.root_access=0
 
 # Wifi
-ro.mediatek.wlan.wsc=1
-ro.mediatek.wlan.p2p=1
-mediatek.wlan.ctia=0
-wifi.tethering.interface=wlan0
 wifi.interface=wlan0
 wifi.direct.interface=p2p0
 
@@ -50,6 +44,9 @@ ro.boot.selinux=disable
 debug.hwui.render_dirty_regions=false
 ro.hardware.egl=mali
 
+# Storage
+ro.sys.sdcardfs=true
+
 # performance
 #ro.mtk_perf_simple_start_win=1
 #ro.mtk_perf_fast_start_win=1
@@ -67,10 +64,6 @@ persist.mtk.wcn.dynamic.dump=0
 service.wcn.driver.ready=no
 ro.sf.hwrotation=0
 persist.sys.scrollingcache=2
-touch.size.calibration=geometric
-touch.size.scale=100
-touch.pressure.calibration=amplitude
-touch.pressure.scale=0.1
 
 # temporary enables NAV bar (soft keys)
 qemu.hw.mainkeys=0
