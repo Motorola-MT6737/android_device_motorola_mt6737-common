@@ -77,8 +77,6 @@ MTK_GPU_VERSION := mali midgard r7p0
 
 # Mediatek support
 BOARD_USES_MTK_HARDWARE:=true
-BOARD_HAS_MTK_HARDWARE := true
-MTK_HARDWARE := true
 
 # Camera
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
