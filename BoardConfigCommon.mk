@@ -191,7 +191,7 @@ endif
 TARGET_SYSTEM_PROP := $(VENDOR_PATH)/system.prop
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote32
+#PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote32
 
 # Sepolicy
 BOARD_SEPOLICY_DIRS := \
