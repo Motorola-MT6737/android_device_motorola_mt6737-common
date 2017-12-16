@@ -100,6 +100,11 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf \
     lib_driver_cmd_mt66xx
 
+PRODUCT_COPY_FILES += \
+    $(VENDOR_PATH)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
+    $(VENDOR_PATH)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+    $(VENDOR_PATH)/configs/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
+
 PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory
@@ -154,6 +159,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.legacyencoder=0
+
+# Display calibration
+PRODUCT_PACKAGES += \
+    libjni_livedisplay
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
