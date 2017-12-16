@@ -47,7 +47,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
     frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
@@ -84,8 +83,15 @@ PRODUCT_COPY_FILES += \
     $(VENDOR_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc \
     $(VENDOR_PATH)/rootdir/init.mt6735.power.rc:root/init.mt6735.power.rc
 
+# HIDL
+PRODUCT_COPY_FILES += \
+    $(VENDOR_PATH)/manifest.xml:system/vendor/manifest.xml
+
 # Audio
 PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.audio@2.0-service \
     audio.a2dp.default \
     audio.r_submix.default \
     libaudio-resampler \
@@ -96,12 +102,13 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
     dhcpcd.conf \
     hostapd \
+    wificond \
     libwpa_client \
     wpa_supplicant \
-    wpa_supplicant.conf \
-    lib_driver_cmd_mt66xx
+    wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
     $(VENDOR_PATH)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
@@ -112,10 +119,22 @@ PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory
 
+# Bluetooth
 PRODUCT_PACKAGES += \
-    charger \
+    android.hardware.bluetooth@1.0-impl \
+    android.hardware.bluetooth@1.0-service
+
+# Charger Mode
+PRODUCT_PACKAGES += \
+    charger_res_images
+
+PRODUCT_PACKAGES += \
     libnl_2 \
-    libion \
+    libion
+
+# Fingerprint HAL
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint@2.1-service \
     fingerprintd
 
 # Charger Mode
@@ -123,20 +142,88 @@ PRODUCT_PACKAGES += \
     charger_res_images
 
 # FM Radio
-PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
+#PRODUCT_PACKAGES += \
+#    FMRadio \
+#    libfmjni
 
-# Camera
+# Camera HAL
 PRODUCT_PACKAGES += \
+    camera.device@1.0-impl \
+    camera.device@3.2-impl \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
     Snap
 
 # mtk symbols
 PRODUCT_PACKAGES += \
     mtk_symbols
 
+# USB HAL
 PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service
+    
+# Health HAL
+PRODUCT_PACKAGES += \
+    android.hardware.health@1.0-impl \
+    android.hardware.health@1.0-service
+    
+# Power HAL
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl \
     power.mt6737m
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service
+    
+# Keymaster HAL
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl
+    
+# Gatekeeper HAL
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service
+
+# Drm HAL 
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl
+    
+# GPS HAL
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl
+    
+# GPS force mode
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.force.gps.mode=gnss
+
+# Lights
+PRODUCT_PACKAGES += \
+    lights.mt6737m \
+    android.hardware.light@2.0-impl \
+    android.hardware.light@2.0-service
+
+# Sensors HAL
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl \
+    android.hardware.sensors@1.0-service
+
+# Graphic HAL
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.renderscript@1.0-impl \
+    android.hardware.memtrack@1.0-impl \
+    libgralloc_extra \
+    libgui_ext \
+    libui_ext
+    
+# Omx HAL
+PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0
 
 # Extras
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -179,4 +266,4 @@ PRODUCT_SYSTEM_SERVER_JARS += com.cyanogenmod.keyhandler
 
 $(call add-product-dex-preopt-module-config,com.cyanogenmod.keyhandler,disable)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
