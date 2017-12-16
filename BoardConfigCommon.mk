@@ -77,6 +77,8 @@ MTK_GPU_VERSION := mali midgard r7p0
 
 # Mediatek support
 BOARD_USES_MTK_HARDWARE:=true
+BOARD_HAS_MTK_HARDWARE := true
+MTK_HARDWARE := true
 
 # Camera
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
@@ -122,7 +124,7 @@ WIFI_DRIVER_STATE_CTRL_PARAM := /dev/wmtWifi
 WIFI_DRIVER_STATE_ON := 1
 WIFI_DRIVER_STATE_OFF := 0
 
-# Enable Minikin text layout engine (will be the default soon)
+# Enable Minikin text layout engine
 USE_MINIKIN := true
 
 # Charger
@@ -144,25 +146,34 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 # TWRP
 ifeq ($(WITH_TWRP),true)
 TW_THEME := portrait_hdpi
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_NO_REBOOT_BOOTLOADER := true
 TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
-TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
 TW_MAX_BRIGHTNESS := 255
+TW_DEFAULT_BRIGHTNESS := 120		
 TW_EXCLUDE_SUPERSU := true
 TW_INCLUDE_FB2PNG := true
+TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 TW_NO_CPU_TEMP := true
-TW_REBOOT_BOOTLOADER := true
 TW_REBOOT_RECOVERY := true
-TW_HAS_DOWNLOAD_MODE := true
-TW_EXCLUDE_SUPERSU := true
 TW_USE_TOOLBOX := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_INTERNAL_STORAGE_PATH := "/emmc"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "emmc"
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+TW_INCLUDE_CRYPTO := true
+TW_CRYPTO_FS_TYPE := "ext4"
+TARGET_USERIMAGES_USE_EXT4 := true
+TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
+TW_HAVE_SELINUX := true
+TW_HAS_MTP := true
+TW_CRYPTO_MNT_POINT := "/data"
+TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered"
+TW_NEVER_UNMOUNT_SYSTEM := true
+TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/battery/power_supply/battery"
+TW_ALWAYS_RMRF := true
 TW_NO_SCREEN_BLANK := true
 endif
 
