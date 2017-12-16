@@ -1,15 +1,13 @@
 LOCAL_PATH := $(call my-dir)
-
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
-	GraphicBufferExtra.cpp \
-	GraphicBufferExtra_hal.cpp
-#	ge.c
+    GraphicBufferExtra.cpp \
+    GraphicBufferExtra_hal.cpp
 
 LOCAL_C_INCLUDES := \
-	device/moto/e4/libgralloc_extra/include \
-	device/moto/e4/libgralloc_extra/../include
+    device/motorola/mt6737-common/libgralloc_extra/include \
+    device/motorola/mt6737-common/libgralloc_extra/../include
 
 LOCAL_SHARED_LIBRARIES := \
     libhardware \
@@ -17,21 +15,19 @@ LOCAL_SHARED_LIBRARIES := \
     libutils \
     liblog \
     libion \
-	libged
+    libged
 
 LOCAL_EXPORT_C_INCLUDE_DIRS := \
-	device/moto/e4/libgralloc_extra/include
+    device/motorola/mt6737-common/libgralloc_extra/include
 
 LOCAL_C_INCLUDES += \
-	system/core/libion/include \
+    system/core/libion/include \
 
 LOCAL_MODULE := libgralloc_extra
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
-
 ifneq ($(TARGET_2ND_ARCH), "")
-
 include $(CLEAR_VARS)
 
 test-sanity-gralloc_extra: lpath := $(LOCAL_PATH)
@@ -51,9 +47,7 @@ test-sanity-gralloc_extra: $(TARGET_OUT)/vendor/lib/libgralloc_extra.so
 	fi
 
 LOCAL_SHARED_LIBRARIES := libgralloc_extra
-
 LOCAL_MODULE := test-sanity-gralloc_extra
-
 include $(BUILD_PHONY_PACKAGE)
 
 endif
