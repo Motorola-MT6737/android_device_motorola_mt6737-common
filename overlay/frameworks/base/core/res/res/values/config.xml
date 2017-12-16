@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
- ** Copyright 2014, The CyanogenMod Project
+ ** Copyright 2018, The LineageOS Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -243,14 +243,21 @@
 
     <!-- If supported, are dreams enabled? (by default) -->
     <bool name="config_dreamsEnabledByDefault">false</bool>
-	
+
+    <!-- The RadioAccessFamilies supported by the device.
+         Empty is viewed as "all".  Only used on devices which
+         don't support RIL_REQUEST_GET_RADIO_CAPABILITY
+         format is UMTS|LTE|... -->
+    <string translatable="false" name="config_radio_access_family">GSM|HS|CDMA|EVDO|WCDMA|LTE</string>
+
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
         <item>"/system/framework/arm/boot-framework.oat"</item>
         <item>"/system/framework/oat/arm/services.odex"</item>
         <item>"/system/framework/arm/boot.oat"</item>
         <item>"/system/framework/arm/boot-core-libart.oat"</item>
-	<item>"/data/dalvik-cache/arm64/system@framework@services.jar@classes.dex"</item>
+        <item>"/data/dalvik-cache/arm/system@framework@boot.oat"</item>
+        <item>"/data/dalvik-cache/arm/system@framework@services.jar@classes.dex"</item>
     </string-array>
 
 </resources>
