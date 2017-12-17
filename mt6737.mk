@@ -108,7 +108,8 @@ PRODUCT_PACKAGES += \
     wificond \
     libwpa_client \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    lib_driver_cmd_mt66xx
 
 PRODUCT_COPY_FILES += \
     $(VENDOR_PATH)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
