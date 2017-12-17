@@ -150,10 +150,10 @@ PRODUCT_PACKAGES += \
     mtkrild
 
 # FM Radio
-PRODUCT_PACKAGES += \
-    android.hardware.broadcastradio@1.0-impl \
-    FMRadio \
-    libfmjni
+#PRODUCT_PACKAGES += \
+#    android.hardware.broadcastradio@1.0-impl \
+#    FMRadio \
+#    libfmjni
 
 # Camera HAL
 PRODUCT_PACKAGES += \
