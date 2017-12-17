@@ -145,14 +145,15 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    rild \
     libccci_util \
-    libril
+    librilmtk \
+    mtkrild
 
 # FM Radio
-#PRODUCT_PACKAGES += \
-#    FMRadio \
-#    libfmjni
+PRODUCT_PACKAGES += \
+    android.hardware.broadcastradio@1.0-impl \
+    FMRadio \
+    libfmjni
 
 # Camera HAL
 PRODUCT_PACKAGES += \
