@@ -20,10 +20,6 @@ VENDOR_PATH := device/motorola/mt6737-common
 
 DEVICE_PACKAGE_OVERLAYS += $(VENDOR_PATCH)/overlay
 
-# Dalvik/HWUI
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
-
 # set locales & aapt config.
 PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
@@ -99,23 +95,6 @@ PRODUCT_PACKAGES += \
     libtinycompress \
     libtinymix \
     libtinyxml
-
-# WiFi
-PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service \
-    dhcpcd.conf \
-    hostapd \
-    wificond \
-    wifilogd \
-    libwpa_client \
-    wpa_supplicant \
-    wpa_supplicant.conf \
-    lib_driver_cmd_mt66xx
-
-PRODUCT_COPY_FILES += \
-    $(VENDOR_PATH)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
-    $(VENDOR_PATH)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
-    $(VENDOR_PATH)/configs/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
 
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -234,6 +213,23 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.media.omx@1.0
 
+# WiFi
+PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
+    dhcpcd.conf \
+    hostapd \
+    lib_driver_cmd_mt66xx \
+    libwpa_client \
+    wificond \
+    wifilogd \
+    wpa_supplicant \
+    wpa_supplicant.conf
+
+PRODUCT_COPY_FILES += \
+    $(VENDOR_PATH)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
+    $(VENDOR_PATH)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+    $(VENDOR_PATH)/configs/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
+
 # Extras
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.mount.fs=EXT4 \
@@ -273,6 +269,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_SYSTEM_SERVER_JARS += com.cyanogenmod.keyhandler
 
+$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 $(call add-product-dex-preopt-module-config,com.cyanogenmod.keyhandler,disable)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
