@@ -410,7 +410,7 @@ on post-fs-data
     chown root diag /sys/bus/platform/drivers/eint/current_eint
 
     # for ppp options file
-    mkdir /data/misc/ppp 0770 bluetooth net_bt
+    mkdir /data/misc/ppp 0770 bluetooth bluetooth
 
     # for libipsec_ims
     mkdir /data/misc/setkey 0770 root system
@@ -433,7 +433,7 @@ on post-fs-data
     chown root system /dev/devmap
 
     # bluetooth
-    mkdir /data/@btmtk 0770 bluetooth net_bt
+    mkdir /data/@btmtk 0770 bluetooth bluetooth
     chown bluetooth bluetooth /data/@btmtk/host_cache
     chown bluetooth bluetooth /data/@btmtk/dev_cache
     chown bluetooth bluetooth /dev/hid-keyboard
@@ -515,7 +515,7 @@ on post-fs-data
     chmod 0640 /mtd@recovery
     chown root system /mtd@recovery
 
-    chmod 0660 /mtd@nvram
+    chmod 0666 /mtd@nvram
     chown root system /mtd@nvram
 
     chmod 0660 /mtd@seccfg
@@ -524,7 +524,7 @@ on post-fs-data
     chmod 0660 /mtd@misc
     chown root system /mtd@misc
 
-    chmod 0664 /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
+    chmod 0666 /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
     chown media media /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
 
     #mtk_sched
@@ -750,6 +750,21 @@ service aal /vendor/bin/aal
     class main
     user system
     group system graphics radio
+
+service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
+    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
+    -I/system/etc/wifi/wpa_supplicant_overlay.conf -N \
+    -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -e/data/misc/wifi/entropy.bin -dd \
+    -I/system/etc/wifi/p2p_supplicant_overlay.conf \
+    -O/data/misc/wifi/sockets -g@android:wpa_wlan0
+    #   we will start as root and wpa_supplicant will switch to user wifi
+    #   after setting up the capabilities required for WEXT
+    #   user wifi
+    #   group wifi inet keystore
+    class late_start
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -BK -dd
     class main
