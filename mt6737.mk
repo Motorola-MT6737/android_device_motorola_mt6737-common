@@ -143,6 +143,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
+# RIL
+PRODUCT_PACKAGES += \
+    rild \
+    libccci_util \
+    libril
+
 # FM Radio
 #PRODUCT_PACKAGES += \
 #    FMRadio \
@@ -163,12 +169,12 @@ PRODUCT_PACKAGES += \
 # USB HAL
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
-    
+
 # Health HAL
 PRODUCT_PACKAGES += \
     android.hardware.health@1.0-impl \
     android.hardware.health@1.0-service
-    
+
 # Power HAL
 PRODUCT_PACKAGES += \
     android.hardware.power@1.0-impl \
@@ -178,24 +184,24 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
-    
+
 # Keymaster HAL
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl
-    
+
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl \
     android.hardware.gatekeeper@1.0-service
 
-# Drm HAL 
+# Drm HAL
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl
-    
+
 # GPS HAL
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl
-    
+
 # GPS force mode
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.force.gps.mode=gnss
@@ -222,7 +228,7 @@ PRODUCT_PACKAGES += \
     libgralloc_extra \
     libgui_ext \
     libui_ext
-    
+
 # Omx HAL
 PRODUCT_PACKAGES += \
     android.hardware.media.omx@1.0

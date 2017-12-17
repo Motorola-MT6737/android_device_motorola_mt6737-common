@@ -72,12 +72,12 @@ BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
 # Charger
 WITH_LINEAGE_CHARGER := false
- 
+
 # SensorHAL
 TARGET_SENSORS_DEVICE_API_VERSION := SENSORS_DEVICE_API_VERSION_1_1
 
 # Graphics
-USE_OPENGL_RENDERER:=true
+USE_OPENGL_RENDERER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
@@ -88,7 +88,7 @@ MTK_GPU_VERSION := mali midgard r12p1
 OVERRIDE_RS_DRIVER := libRSDriver_mtk.so
 
 # Mediatek support
-BOARD_USES_MTK_HARDWARE:=true
+BOARD_USES_MTK_HARDWARE := true
 
 # Camera
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
@@ -104,9 +104,6 @@ BOARD_USES_MTK_AUDIO := true
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS := $(VENDOR_PATH)/lineagehw
-
-# Fix video autoscaling on old OMX decoders
-#TARGET_OMX_LEGACY_RESCALING := true
 
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
@@ -140,6 +137,9 @@ BOARD_CHARGER_SHOW_PERCENTAGE := true
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
 
+# RIL
+BOARD_PROVIDES_RILD := true
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_BLUETOOTH_BDROID_HCILP_INCLUDED := 0
@@ -158,7 +158,7 @@ RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
 TW_MAX_BRIGHTNESS := 255
-TW_DEFAULT_BRIGHTNESS := 120		
+TW_DEFAULT_BRIGHTNESS := 120
 TW_EXCLUDE_SUPERSU := true
 TW_INCLUDE_FB2PNG := true
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
@@ -188,7 +188,6 @@ endif
 TARGET_SYSTEM_PROP := $(VENDOR_PATH)/system.prop
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
-#PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote32
 
 # Sepolicy
 BOARD_SEPOLICY_DIRS := \
