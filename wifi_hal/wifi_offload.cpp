@@ -13,7 +13,8 @@
 #include <netlink/object-api.h>
 #include <netlink/netlink.h>
 #include <netlink/socket.h>
-//#include <netlink-types.h>
+#include <netlink-private/object-api.h>
+#include <netlink-private/types.h>
 
 #include "nl80211_copy.h"
 #include "sync.h"
@@ -34,9 +35,9 @@ typedef enum {
 } WIFI_OFFLOAD_SUB_COMMAND;
 
 typedef enum {
-    MKEEP_ALIVE_ATTRIBUTE_ID = 1,
-    MKEEP_ALIVE_ATTRIBUTE_IP_PKT_LEN,
+    MKEEP_ALIVE_ATTRIBUTE_ID,
     MKEEP_ALIVE_ATTRIBUTE_IP_PKT,
+    MKEEP_ALIVE_ATTRIBUTE_IP_PKT_LEN,
     MKEEP_ALIVE_ATTRIBUTE_SRC_MAC_ADDR,
     MKEEP_ALIVE_ATTRIBUTE_DST_MAC_ADDR,
     MKEEP_ALIVE_ATTRIBUTE_PERIOD_MSEC
@@ -205,9 +206,10 @@ wifi_error wifi_start_sending_offloaded_packet(wifi_request_id index, wifi_inter
             && (ip_packet_len <= MKEEP_ALIVE_IP_PKT_MAX)) {
         MKeepAliveCommand *cmd = new MKeepAliveCommand(iface, index, ip_packet, ip_packet_len,
                 src_mac_addr, dst_mac_addr, period_msec, START_MKEEP_ALIVE);
-        wifi_error err = (wifi_error) cmd->start();
-        delete cmd;
-        return err;
+        NULL_CHECK_RETURN(cmd, "memory allocation failure", WIFI_ERROR_OUT_OF_MEMORY);
+        wifi_error result = (wifi_error)cmd->start();
+        cmd->releaseRef();
+        return result;
     } else {
         ALOGE("Invalid mkeep_alive parameters");
         return  WIFI_ERROR_INVALID_ARGS;
@@ -219,9 +221,10 @@ wifi_error wifi_stop_sending_offloaded_packet(wifi_request_id index, wifi_interf
 {
     if (index > 0 && index <= N_AVAIL_ID) {
         MKeepAliveCommand *cmd = new MKeepAliveCommand(iface, index, STOP_MKEEP_ALIVE);
-        wifi_error err = (wifi_error) cmd->start();
-        delete cmd;
-        return err;
+        NULL_CHECK_RETURN(cmd, "memory allocation failure", WIFI_ERROR_OUT_OF_MEMORY);
+        wifi_error result = (wifi_error)cmd->start();
+        cmd->releaseRef();
+        return result;
     } else {
         ALOGE("Invalid mkeep_alive parameters");
         return  WIFI_ERROR_INVALID_ARGS;
