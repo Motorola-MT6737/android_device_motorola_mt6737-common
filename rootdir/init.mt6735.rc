@@ -6,7 +6,7 @@ import init.modem.rc
 on early-init
     # Turn off backlight on blank
     write /sys/class/leds/lcd-backlight/trigger "backlight"
-    export LD_SHIM_LIBS "/system/vendor/lib/libcam_utils.so|/system/lib/mtk_symbols.so:/system/vendor/lib/libcam.utils.sensorlistener.so|/system/lib/libsensor.so:/system/vendor/lib/libcam.camadapter.so|/system/lib/libcamera1_client.so"
+    export LD_SHIM_LIBS "/system/vendor/lib/libcam_utils.so|/system/lib/mtk_symbols.so:/system/vendor/lib/libcam.utils.sensorlistener.so|/system/lib/libsensor.so"
 
     # BATTERY proc
     chown shell system /proc/mtk_battery_cmd/current_cmd
