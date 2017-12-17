@@ -111,9 +111,6 @@ BOARD_HARDWARE_CLASS := $(VENDOR_PATH)/lineagehw
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
-# RIL
-BOARD_RIL_CLASS := ../../../device/motorola/mt6737-common/ril/
-
 # GPS
 BOARD_GPS_LIBRARIES := true
 BOARD_CONNECTIVITY_MODULE := MT6625
