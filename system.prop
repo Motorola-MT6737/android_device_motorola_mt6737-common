@@ -41,7 +41,7 @@ persist.sys.strictmode.disable=1
 ro.boot.selinux=disable
 
 # Disable dirty region for Mali
-debug.hwui.render_dirty_regions=false
+debug.hwui.profile=true
 debug.hwui.use_buffer_age=false
 ro.hardware.egl=mali
 
@@ -57,7 +57,6 @@ ro.mediatek.chip_ver=S01
 ro.mediatek.version.release=alps-mp-n1.mp1-V1_lenovo6737m.35.n1_P68
 ro.mediatek.version.branch=alps-mp-n1.mp1
 ro.mediatek.platform=MT6737M
-ro.mediatek.version.sdk=4
 persist.mtk.wcn.combo.chipid=0x0335
 persist.mtk.wcn.patch.version=-1
 persist.mtk.wcn.fwlog.status=0
@@ -94,7 +93,6 @@ mdc_initial_max_retry=10
 # Telephony
 rild.libpath=mtk-ril.so
 rild.libargs=-d /dev/ttyC0
-ro.telephony.ril_class=MT6735
 ro.telephony.ril.config=fakeiccid
 ro.telephony.sim.count=2
 persist.radio.default.sim=0
@@ -119,7 +117,6 @@ ro.boot.opt_md3_support=0
 ro.boot.opt_md5_support=0
 persist.radio.mtk_ps3_rat=G
 ro.mtk_md_sbp_custom_value=0
-ro.mtk_world_phone_policy=0
 ro.mtk_fd_support=1
 ro.num_md_protocol=2
 ro.mtk_protocol1_rat_config=Lf/Lt/W/G
